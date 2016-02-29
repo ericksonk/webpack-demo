@@ -5,11 +5,20 @@ path = require('path');
 var APP = __dirname + '/app';
 
 module.exports = {
-  // config goes here
   context: APP,
-  entry: {
-    app: 'app/app.js'
+   entry: {
+      app: ['webpack/hot/dev-server', './app.js']
   },
-  output: APP,
-  filename: 'bundle.js'
+  output: {
+      path: APP,
+      filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }
+    ]
+  },
 };
